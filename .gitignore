@@ -1,0 +1,16 @@
+.next
+.turbo
+node_modules
+dist
+coverage
+.env
+.env.*
+!.env.example
+package-lock.json
+playwright-report
+test-results
+tmp
+*.log
+apps/web/.next
+apps/web/.vercel
+packages/db/generated
