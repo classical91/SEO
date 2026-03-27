@@ -39,7 +39,7 @@ if (!binary) {
   process.exit(1);
 }
 
-const localEnv = parseEnvFile(readFileSync(envPath, "utf8"));
+const localEnv = existsSync(envPath) ? parseEnvFile(readFileSync(envPath, "utf8")) : {};
 const binaryName = process.platform === "win32" ? `${binary}.CMD` : binary;
 const candidateDirectories = [
   process.cwd(),

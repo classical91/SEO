@@ -1,0 +1,23 @@
+[build]
+builder = "RAILPACK"
+buildCommand = "pnpm --filter @rankforge/worker railway:build"
+watchPatterns = [
+  "/apps/worker/**",
+  "/packages/ai/**",
+  "/packages/crawler/**",
+  "/packages/db/**",
+  "/packages/integrations/**",
+  "/packages/seo/**",
+  "/package.json",
+  "/pnpm-lock.yaml",
+  "/pnpm-workspace.yaml",
+  "/scripts/**",
+  "/tsconfig.base.json",
+  "/turbo.json",
+  "/.npmrc"
+]
+
+[deploy]
+startCommand = "pnpm --filter @rankforge/worker start"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10

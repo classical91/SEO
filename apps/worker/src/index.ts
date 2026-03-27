@@ -53,4 +53,19 @@ worker.on("failed", (job, error) => {
   console.error(`Failed ${job?.name} (${job?.id})`, error);
 });
 
+async function shutdown(signal: string) {
+  console.log(`RankForge worker received ${signal}. Shutting down.`);
+  await worker.close();
+  await connection.quit();
+  process.exit(0);
+}
+
+process.on("SIGINT", () => {
+  void shutdown("SIGINT");
+});
+
+process.on("SIGTERM", () => {
+  void shutdown("SIGTERM");
+});
+
 console.log("RankForge worker started.");
